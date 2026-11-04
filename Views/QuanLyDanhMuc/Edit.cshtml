@@ -1,0 +1,35 @@
+﻿@model AnhHoaBakery.Models.DanhMuc
+
+@{
+    ViewData["Title"] = "Sửa danh mục"; // Sửa lại tiêu đề cho đúng
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-warning text-dark">
+            <h4 class="mb-0">Sửa danh mục</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="MaDanhMuc" />
+
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <label class="form-label fw-bold">Tên danh mục</label>
+                        <input asp-for="TenDanhMuc" class="form-control" required />
+                        <span asp-validation-for="TenDanhMuc" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label class="form-label fw-bold">Mô tả</label>
+                        <textarea asp-for="MoTa" class="form-control" rows="3"></textarea>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn btn-warning">Cập nhật</button>
+                <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+            </form>
+        </div>
+    </div>
+</div>

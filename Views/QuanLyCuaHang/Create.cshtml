@@ -1,0 +1,47 @@
+﻿@model AnhHoaBakery.Models.CuaHang
+@{
+    ViewData["Title"] = "Thêm cửa hàng mới";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Thêm cửa hàng mới</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" enctype="multipart/form-data" method="post">
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Tên cửa hàng / Chi nhánh</label>
+                            <input asp-for="TenCuaHang" class="form-control" placeholder="Ví dụ: Anh Hòa Bakery - Cầu Giấy" required />
+                            <span asp-validation-for="TenCuaHang" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Địa chỉ chi tiết</label>
+                            <input asp-for="DiaChi" class="form-control" placeholder="Số nhà, đường, quận..." required />
+                            <span asp-validation-for="DiaChi" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Hotline / Zalo</label>
+                            <input asp-for="Hotline" class="form-control" placeholder="09xxx..." />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Ảnh cửa hàng</label>
+                            <input type="file" name="HinhAnhFile" class="form-control" accept="image/*" />
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Index" class="btn btn-secondary me-md-2">Quay lại</a>
+                            <button type="submit" class="btn btn-success">Lưu cửa hàng</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

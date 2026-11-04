@@ -1,0 +1,54 @@
+﻿@model IEnumerable<AnhHoaBakery.Models.CuaHang>
+@{
+    ViewData["Title"] = "Hệ thống cửa hàng";
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12 text-center">
+            <h3 class="fw-bold text-primary text-uppercase">Hệ thống cửa hàng</h3>
+            <p class="text-muted">Tìm ngay cửa hàng gần bạn nhất để thưởng thức bánh ngon</p>
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card border-0 shadow-sm h-100 hover-shadow">
+                    <div class="row g-0 h-100 align-items-center">
+                        <div class="col-4 overflow-hidden">
+                            <img src="~/images/@(string.IsNullOrEmpty(item.AnhMinhHoa) ? "default-store.jpg" : item.AnhMinhHoa)"
+                                 class="img-fluid rounded-start h-100 w-100"
+                                 style="object-fit: cover; min-height: 150px;"
+                                 alt="@item.TenCuaHang"
+                                 onerror="this.src='https://via.placeholder.com/150?text=No+Image'" />
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold text-dark">@item.TenCuaHang</h5>
+                                <p class="card-text mb-1 text-muted small">
+                                    <i class="fa fa-map-marker-alt text-danger me-2"></i>@item.DiaChi
+                                </p>
+                                <p class="card-text fw-bold text-success">
+                                    <i class="fa fa-phone-alt me-2"></i>@item.Hotline
+                                </p>
+                                <a href="https://www.google.com/maps/search/?api=1&query=@item.DiaChi" target="_blank" class="btn btn-outline-primary btn-sm mt-2">
+                                    <i class="fa fa-location-arrow"></i> Chỉ đường
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .hover-shadow:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+        transition: .3s;
+    }
+</style>

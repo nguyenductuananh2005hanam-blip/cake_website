@@ -1,0 +1,92 @@
+﻿@model AnhHoaBakery.Models.Banh
+@{
+    ViewData["Title"] = Model.TenBanh;
+}
+
+<div class="container mt-5">
+    <div class="card border-0 shadow-sm mb-5">
+        <div class="row g-0">
+            <div class="col-md-5 bg-light d-flex align-items-center justify-content-center p-4">
+                <img src="~/images/@Model.HinhAnh" class="img-fluid rounded shadow-sm"
+                     style="max-height: 400px; width: auto;"
+                     alt="@Model.TenBanh"
+                     onerror="this.src='https://via.placeholder.com/400?text=No+Image'">
+            </div>
+
+            <div class="col-md-7">
+                <div class="card-body p-5">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/" class="text-muted">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a href="/Home/Index?categoryId=@Model.MaDanhMuc" class="text-muted">@Model.DanhMuc?.TenDanhMuc</a></li>
+                            <li class="breadcrumb-item active text-primary" aria-current="page">@Model.TenBanh</li>
+                        </ol>
+                    </nav>
+
+                    <h2 class="fw-bold text-uppercase mb-3" style="color: var(--main-color);">@Model.TenBanh</h2>
+
+                    <h3 class="product-price mb-4" style="font-size: 2rem;">@Model.Gia.ToString("#,##0")đ</h3>
+
+                    <p class="text-muted mb-4">
+                        @(string.IsNullOrEmpty(Model.MoTa) ? "Đang cập nhật mô tả cho sản phẩm này..." : Model.MoTa)
+                    </p>
+
+                    <ul class="list-unstyled mb-4 text-muted">
+                        <li><i class="fa fa-check text-success me-2"></i>Tình trạng: <b>@(Model.TrangThai ? "Còn hàng" : "Hết hàng")</b></li>
+
+                        <li><i class="fa fa-clock text-warning me-2"></i>Ngày sản xuất: @Model.NgaySanXuat.ToString("dd/MM/yyyy")</li>
+                        <li><i class="fa fa-calendar-alt text-danger me-2"></i>Hạn sử dụng: @Model.HanSuDung.ToString("dd/MM/yyyy")</li>
+                    </ul>
+
+                    <hr class="my-4">
+
+                    <div class="d-flex gap-3">
+                        <button class="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold ajax-add-to-cart" data-id="@Model.MaBanh">
+                            <i class="fa fa-cart-plus me-2"></i> THÊM VÀO GIỎ
+                        </button>
+
+                        <a href="/" class="btn btn-outline-secondary btn-lg px-4 py-3 rounded-pill">
+                            Tiếp tục mua
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (ViewBag.RelatedProducts != null)
+    {
+        var related = ViewBag.RelatedProducts as List<AnhHoaBakery.Models.Banh>;
+        if (related.Count > 0)
+        {
+            <h3 class="fw-bold text-primary text-uppercase mb-4 border-bottom pb-2">SẢN PHẨM CÙNG LOẠI</h3>
+            <div class="row">
+                @foreach (var item in related)
+                {
+                    <div class="col-md-3 mb-4">
+                        <div class="card product-card h-100">
+                            <a href="/Home/Details?id=@item.MaBanh">
+                                <div style="height: 200px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #f8f9fa;">
+                                    <img src="~/images/@item.HinhAnh" class="card-img-top" alt="@item.TenBanh"
+                                         style="max-height: 100%; width: auto;"
+                                         onerror="this.src='https://via.placeholder.com/200?text=No+Image'">
+                                </div>
+                            </a>
+                            <div class="card-body text-center">
+                                <a href="/Home/Details?id=@item.MaBanh" class="text-decoration-none">
+                                    <h6 class="card-title fw-bold text-truncate text-dark">@item.TenBanh</h6>
+                                </a>
+                                <p class="product-price">@item.Gia.ToString("#,##0")đ</p>
+                            </div>
+                            <div class="card-footer p-0 border-0">
+                                <button class="btn btn-add-cart py-2 w-100 ajax-add-to-cart" data-id="@item.MaBanh">
+                                    <i class="fa fa-cart-plus"></i> Thêm vào giỏ
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    }
+</div>

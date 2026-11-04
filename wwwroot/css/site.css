@@ -1,0 +1,225 @@
+/* site.css - Style theo Anh Hoa Bakery */
+/*:root {
+    --primary-color: #0d6efd;*/ /* Màu xanh dương chủ đạo (giống nút Đăng nhập/Thanh toán) */
+    /*--secondary-color: #ffc107;*/ /* Màu vàng cam (giống icon giỏ hàng/danh mục) */
+    /*--text-dark: #333;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}*/
+
+/* HEADER & NAVBAR (Hình 3.11) */
+/*.navbar-custom {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 15px 0;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: var(--primary-color) !important;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: var(--text-dark) !important;
+    font-weight: 500;
+}*/
+
+/* BANNER (Hình 3.11) */
+/*.hero-banner {
+    background-color: #212529;
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+    margin-bottom: 30px;
+}*/
+
+/* DANH MỤC SIDEBAR (Hình 3.15) */
+/*.category-sidebar .list-group-item {
+    border: 1px solid #ddd;
+    border-left: 5px solid transparent;
+}
+
+    .category-sidebar .list-group-item.active {
+        background-color: #f36f21;*/ /* Màu cam giống hình 3.15 */
+        /*border-color: #f36f21;
+        border-left: 5px solid #d35400;
+        font-weight: bold;
+    }*/
+
+/* CARD SẢN PHẨM (Hình 3.11 & 3.15) */
+/*.product-card {
+    border: none;
+    transition: transform 0.2s;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+.product-price {
+    color: #e74c3c;*/ /* Màu đỏ giá tiền */
+    /*font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.btn-add-cart {
+    background-color: var(--primary-color);
+    color: white;
+    width: 100%;
+    border-radius: 0 0 8px 8px;
+}*/
+
+/* ADMIN LAYOUT (Hình 3.17, 3.18, 3.19) */
+/*.admin-sidebar {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    padding-top: 20px;
+}
+
+.admin-menu-item {
+    padding: 10px 20px;
+    display: block;
+    color: #333;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+    .admin-menu-item.active {
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 4px;
+    }*/
+
+
+
+/* =========================================================
+   SITE.CSS - FIXED LAYOUT & COLOR (NÂU CAFE)
+   ========================================================= */
+
+:root {
+    /* KHAI BÁO BIẾN MÀU (Quan trọng để các thẻ HTML inline nhận diện được) */
+    --primary-color: #a67c52; /* Nâu nhẹ (Màu chính) */
+    --main-brown: #a67c52; /* Alias cho màu chính */
+    --main-brown-hover: #8c6642; /* Nâu đậm hơn khi hover */
+    --text-black: #212529; /* Đen xám đậm (Dễ đọc hơn đen tuyền tuyệt đối) */
+    --bg-light: #f8f9fa;
+}
+
+/* 1. CẤU HÌNH CHUNG */
+body {
+    color: var(--text-black);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-light);
+}
+
+a {
+    color: var(--text-black);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+    a:hover {
+        color: var(--main-brown);
+    }
+
+/* 2. SỬA LỖI BANNER (CĂN GIỮA & NỀN TỐI) */
+.hero-banner {
+    background-color: #2c3e50; /* Nền tối để chữ trắng nổi bật */
+    color: white !important; /* Bắt buộc chữ trắng */
+    padding: 60px 20px;
+    text-align: center; /* Căn giữa nội dung */
+    margin-bottom: 40px;
+    border-radius: 0 0 20px 20px; /* Bo góc dưới nhẹ nhàng */
+}
+
+    /* Đảm bảo tiêu đề bên trong banner cũng màu trắng và căn giữa */
+    .hero-banner h1, .hero-banner p {
+        color: white !important;
+        text-align: center;
+    }
+
+/* 3. SỬA LỖI DANH MỤC (SIDEBAR & TRANG CATEGORIES) */
+
+/* Trang danh mục (Các ô vuông to) */
+.category-card {
+    background-color: var(--main-brown) !important; /* Luôn có nền nâu */
+    border: none;
+}
+
+    .category-card h3, .category-card p, .category-card i {
+        color: white !important; /* Chữ bên trong bắt buộc trắng */
+    }
+
+/* Sidebar bên trái (Danh sách nhỏ) */
+.list-group-item {
+    color: var(--text-black);
+    border: 1px solid #ddd;
+}
+
+    /* Mục đang chọn (Active) */
+    .list-group-item.active {
+        background-color: var(--main-brown) !important;
+        border-color: var(--main-brown) !important;
+        color: white !important;
+        font-weight: bold;
+    }
+
+/* 4. ĐỔI MÀU CÁC NÚT BẤM (XANH -> NÂU) */
+
+/* Chữ tiêu đề, Logo */
+.text-primary, .navbar-brand {
+    color: var(--main-brown) !important;
+}
+
+/* Nút đặc (Solid) */
+.btn-primary, .btn-add-cart {
+    background-color: var(--main-brown) !important;
+    border-color: var(--main-brown) !important;
+    color: white !important;
+}
+
+    .btn-primary:hover, .btn-add-cart:hover {
+        background-color: var(--main-brown-hover) !important;
+        border-color: var(--main-brown-hover) !important;
+    }
+
+/* Nút viền (Outline) */
+.btn-outline-primary {
+    color: var(--main-brown) !important;
+    border-color: var(--main-brown) !important;
+}
+
+    .btn-outline-primary:hover {
+        background-color: var(--main-brown) !important;
+        color: white !important;
+    }
+
+/* Badge số lượng trên giỏ hàng */
+.badge {
+    background-color: #c0392b !important; /* Màu đỏ nổi bật */
+    color: white !important;
+}
+
+/* Giá tiền */
+.product-price {
+    color: #c0392b; /* Đỏ đô */
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Footer */
+footer {
+    background-color: white;
+    border-top: 1px solid #dee2e6;
+    margin-top: 50px;
+    padding: 30px 0;
+}

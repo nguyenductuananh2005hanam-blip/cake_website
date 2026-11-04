@@ -1,0 +1,22 @@
+﻿@model AnhHoaBakery.Models.DanhMuc
+
+<div class="container mt-4 col-md-6">
+    <h3>Thêm danh mục mới</h3>
+    <form asp-action="Create">
+        <div class="mb-3">
+            <label class="form-label">Tên danh mục</label>
+            <input asp-for="TenDanhMuc" class="form-control" />
+            <span asp-validation-for="TenDanhMuc" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Mô tả</label>
+            <textarea asp-for="MoTa" class="form-control"></textarea>
+        </div>
+        <div class="mb-3 form-check">
+            <input class="form-check-input" asp-for="TrangThai" />
+            <label class="form-check-label">Kích hoạt (Còn hàng)</label>
+        </div>
+        <button type="submit" class="btn btn-success">Lưu lại</button>
+        <a asp-action="Index" class="btn btn-secondary">Hủy bỏ</a>
+    </form>
+</div>

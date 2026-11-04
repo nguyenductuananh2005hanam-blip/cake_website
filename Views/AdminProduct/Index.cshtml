@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AnhHoaBakery.Models.Banh>
+@{
+    Layout = null; /* Hoặc tạo Layout Admin riêng */
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quản trị Bánh</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-4">
+    <h2 class="text-danger">QUẢN TRỊ - BẢO TRÌ BÁNH</h2>
+    <a href="/AdminProduct/Create" class="btn btn-success mb-3">+ Thêm mới bánh</a>
+    <a href="/" class="btn btn-secondary mb-3">Về trang chủ</a>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên Bánh</th>
+                <th>Danh mục</th>
+                <th>Giá</th>
+                <th>Ảnh</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaBanh</td>
+                    <td>@item.TenBanh</td>
+                    <td>@item.DanhMuc?.TenDanhMuc</td>
+                    <td>@item.Gia.ToString("#,##0")</td>
+                    <td><img src="~/images/@item.HinhAnh" width="50" /></td>
+                    <td>
+                        @* <a href="#" class="btn btn-warning btn-sm">Sửa</a> *@
+                        <a asp-action="Edit" asp-route-id="@item.MaBanh" class="btn btn-warning">Sửa</a>
+                        <a href="/AdminProduct/Delete/@item.MaBanh" class="btn btn-danger btn-sm" onclick="return confirm('Xóa bánh này?')">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

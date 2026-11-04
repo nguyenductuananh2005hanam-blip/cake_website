@@ -1,0 +1,98 @@
+﻿@model IEnumerable<AnhHoaBakery.Models.Banh>
+@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<div class="hero-banner mb-5">
+    <h1>Ngọt ngào từ tâm</h1>
+    <p class="lead">Hương vị bánh ngọt truyền thống kết hợp hiện đại</p>
+</div>
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
+        <h3 class="fw-bold text-primary text-uppercase">
+            @if (ViewBag.CurrentCategory != null)
+            {
+                <span>SẢN PHẨM THEO DANH MỤC</span>
+            }
+            else if (!string.IsNullOrEmpty(ViewBag.SearchString))
+            {
+
+                <span>KẾT QUẢ TÌM KIẾM</span>
+            }
+            else
+            {
+
+                <span>SẢN PHẨM NỔI BẬT</span>
+            }
+        </h3>
+
+        <form asp-action="Index" method="get" class="d-flex gap-2">
+            @if (!string.IsNullOrEmpty(ViewBag.SearchString))
+            {
+                <input type="hidden" name="searchString" value="@ViewBag.SearchString" />
+            }
+            @if (ViewBag.CurrentCategory != null)
+            {
+                <input type="hidden" name="categoryId" value="@ViewBag.CurrentCategory" />
+            }
+
+            <select name="sortOrder" class="form-select w-auto" onchange="this.form.submit()">
+                @if (ViewBag.CurrentSort == "price_asc")
+                {
+                    <option value="">Mới nhất</option>
+                    <option value="price_asc" selected>Giá tăng dần</option>
+                }
+                else
+                {
+                    <option value="" selected>Mới nhất</option>
+                    <option value="price_asc">Giá tăng dần</option>
+                }
+            </select>
+        </form>
+    </div>
+
+    <div class="row">
+        @if (Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <div class="col-md-3 mb-4">
+                    <div class="card product-card h-100">
+
+                        <a href="/Home/Details?id=@item.MaBanh">
+                            <div style="height: 220px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #f8f9fa;">
+                                <img src="~/images/@item.HinhAnh" class="card-img-top" alt="@item.TenBanh"
+                                     style="max-height: 100%; width: auto;"
+                                     onerror="this.src='https://via.placeholder.com/200?text=No+Image'">
+                            </div>
+                        </a>
+
+                        <div class="card-body text-center d-flex flex-column">
+
+                            <a href="/Home/Details?id=@item.MaBanh" class="text-decoration-none">
+                                <h6 class="card-title fw-bold text-truncate text-dark" title="@item.TenBanh">@item.TenBanh</h6>
+                            </a>
+
+                            <p class="product-price mt-auto mb-2">@item.Gia.ToString("#,##0")đ</p>
+                            <p class="small text-muted">@item.DanhMuc?.TenDanhMuc</p>
+                        </div>
+
+                        <div class="card-footer p-0 border-0">
+                            <button class="btn btn-add-cart py-2 w-100 ajax-add-to-cart" data-id="@item.MaBanh">
+                                <i class="fa fa-cart-plus"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12 text-center py-5">
+                <p class="text-muted fs-5">Không tìm thấy sản phẩm nào phù hợp.</p>
+                <a href="/" class="btn btn-outline-primary">Xem tất cả sản phẩm</a>
+            </div>
+        }
+    </div>
+</div>

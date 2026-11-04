@@ -1,0 +1,90 @@
+﻿@model AnhHoaBakery.Models.ThanhVien
+
+@{
+    ViewData["Title"] = "Đăng ký thành viên";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-header bg-white text-center py-4 border-0">
+                    <h3 class="fw-bold text-primary text-uppercase">Đăng ký thành viên</h3>
+                </div>
+                <div class="card-body p-4 pt-0">
+
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-danger">@ViewBag.Error</div>
+                    }
+
+                    @if (ViewBag.Success != null)
+                    {
+                        <div class="alert alert-success text-center">
+                            <strong>@ViewBag.Success</strong>
+                        </div>
+                        <div class="text-center mt-3">
+                            <a asp-action="Login" class="btn btn-success">Đến trang đăng nhập</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <form asp-action="Register" method="post">
+
+                            <div class="form-floating mb-3">
+                                <input name="TenDangNhap" type="text" class="form-control" id="TenDangNhap" placeholder="username" required>
+                                <label for="TenDangNhap">Tên đăng nhập</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input name="MatKhau" type="password" class="form-control" id="MatKhau" placeholder="Mật khẩu" required>
+                                <label for="MatKhau">Mật khẩu</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input name="ConfirmPassword" type="password" class="form-control" id="ConfirmPassword" placeholder="Nhập lại mật khẩu" required>
+                                <label for="ConfirmPassword">Xác nhận mật khẩu</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input name="HoTen" type="text" class="form-control" id="HoTen" placeholder="Nguyễn Văn A" required>
+                                <label for="HoTen">Tên đầy đủ</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input name="SoDienThoai" type="tel" class="form-control" id="SoDienThoai" placeholder="09xxx" required>
+                                <label for="SoDienThoai">Số điện thoại di động</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input name="DiaChi" type="text" class="form-control" id="DiaChi" placeholder="Địa chỉ" required>
+                                <label for="DiaChi">Địa chỉ</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input name="Email" type="email" class="form-control" id="Email" placeholder="name@example.com" required>
+                                <label for="Email">Email</label>
+                            </div>
+
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" value="true" id="agreeTerms" name="agreeTerms" required>
+                                <label class="form-check-label" for="agreeTerms">
+                                    Tôi đồng ý với điều khoản và các quy định
+                                </label>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg fw-bold rounded-pill">Đăng ký</button>
+                            </div>
+                        </form>
+                    }
+
+                    <div class="text-center mt-4">
+                        <p class="text-muted">Bạn đã có tài khoản? <a asp-action="Login" class="text-primary fw-bold text-decoration-none">Đăng nhập</a></p>
+                        <a href="/" class="text-muted small"><i class="fa fa-arrow-left"></i> Quay lại trang chủ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

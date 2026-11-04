@@ -1,0 +1,49 @@
+﻿@model IEnumerable<AnhHoaBakery.Models.DanhMuc>
+@{
+    ViewData["Title"] = "Bảo trì danh mục";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Hoặc Layout Admin nếu bạn tách riêng
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Bảo trì danh mục</h2>
+        <a asp-action="Create" class="btn btn-primary">+ Thêm danh mục</a>
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>Mã danh mục</th>
+                <th>Tên danh mục</th>
+                <th>Mô tả</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>DM0@(item.MaDanhMuc)</td>
+                    <td>@item.TenDanhMuc</td>
+                    <td>@item.MoTa</td>
+                    <td>
+                        @if (item.TrangThai)
+                        {
+                            <span class="badge bg-success">Còn hàng</span>
+                        }
+                        else
+                        {
+
+                            <span class="badge bg-secondary">Hết hàng</span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.MaDanhMuc" class="btn btn-sm btn-warning">Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@item.MaDanhMuc" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc muốn xóa?');">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

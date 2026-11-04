@@ -1,0 +1,30 @@
+﻿@model List<AnhHoaBakery.Models.CartItem>
+<h3>Giỏ hàng của bạn</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên bánh</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TenBanh</td>
+                <td>@item.Gia.ToString("#,##0")</td>
+                <td>@item.SoLuong</td>
+                <td>@item.ThanhTien.ToString("#,##0")</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">Tổng cộng</td>
+            <td class="fw-bold text-danger">@Model.Sum(x => x.ThanhTien).ToString("#,##0")</td>
+        </tr>
+    </tfoot>
+</table>
+<a href="/Cart/Checkout" class="btn btn-warning">Thanh toán</a>
