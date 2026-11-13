@@ -45,52 +45,53 @@ Cake_shop Web là một ứng dụng thương mại điện tử cung cấp các
     Visual Studio: mở AnhHoaBakery.sln, chọn profile https (hoặc http) ở thanh công cụ, nhấn F5 (chạy có debug) hoặc Ctrl + F5 (chạy không debug).
 
 ## 📂 Cấu Trúc Thư Mục Chính
-AnhHoaBakery/                          ← thư mục solution (gốc)
-├── AnhHoaBakery.sln                   File solution của Visual Studio
-└── AnhHoaBakery/                      ← thư mục project (chứa AnhHoaBakery.csproj)
-    │
-    ├── Controllers/                   Xử lý logic và điều hướng
-    │   ├── HomeController.cs              Trang chủ, danh mục, chi tiết bánh, tìm kiếm, lọc
-    │   ├── AccountController.cs           Đăng ký, đăng nhập, hồ sơ, lịch sử đơn hàng
-    │   ├── CartController.cs              Giỏ hàng (Session) và đặt hàng
-    │   ├── CuaHangController.cs           Danh sách cửa hàng (công khai)
-    │   ├── AdminProductController.cs      Quản lý bánh
-    │   ├── QuanLyDanhMucController.cs     Quản lý danh mục
-    │   ├── QuanLyCuaHangController.cs     Quản lý cửa hàng
-    │   └── AdminThongKeController.cs      Thống kê doanh thu
-    │
-    ├── Models/                        Các lớp dữ liệu (ánh xạ bảng trong CSDL)
-    │   ├── Banh.cs, DanhMuc.cs, ThanhVien.cs
-    │   ├── DonHang.cs, ChiTietDonHang.cs, CuaHang.cs
-    │   └── CartItem.cs, ErrorViewModel.cs
-    │
-    ├── Data/
-    │   └── BakeryContext.cs           DbContext của Entity Framework Core
-    │
-    ├── Migrations/                    3 migration và ModelSnapshot, dùng để tạo CSDL
-    │
-    ├── Views/                         Giao diện Razor (.cshtml)
-    │   ├── Home/                          Index, Categories, Details, Privacy
-    │   ├── Account/                       Login, Register, Profile, History
-    │   ├── Cart/                          Index, Cart, Checkout
-    │   ├── CuaHang/                       Index
-    │   ├── AdminProduct/                  Index, Create, Edit
-    │   ├── QuanLyDanhMuc/                 Index, Create, Edit
-    │   ├── QuanLyCuaHang/                 Index, Create, Edit
-    │   ├── AdminThongKe/                  Index
-    │   └── Shared/                        _Layout, Error, _ValidationScriptsPartial
-    │
-    ├── wwwroot/                       Tệp tĩnh
-    │   ├── css/site.css
-    │   ├── js/site.js
-    │   ├── images/                        Ảnh bánh (banh1…8.jpg) và cửa hàng (store1…4.jpg)
-    │   └── lib/                           bootstrap, jquery, jquery-validation
-    │
-    ├── Properties/launchSettings.json Cổng và profile khi chạy
-    ├── appsettings.json               Chuỗi kết nối CSDL
-    ├── appsettings.Development.json
-    ├── Program.cs                     Điểm khởi động, cấu hình DbContext và Session
-    └── AnhHoaBakery.csproj            Khai báo .NET 10 và các gói NuGet
-
+    ```
+        AnhHoaBakery/                          ← thư mục solution (gốc)
+        ├── AnhHoaBakery.sln                   File solution của Visual Studio
+        └── AnhHoaBakery/                      ← thư mục project (chứa AnhHoaBakery.csproj)
+            │
+            ├── Controllers/                   Xử lý logic và điều hướng
+            │   ├── HomeController.cs              Trang chủ, danh mục, chi tiết bánh, tìm kiếm, lọc
+            │   ├── AccountController.cs           Đăng ký, đăng nhập, hồ sơ, lịch sử đơn hàng
+            │   ├── CartController.cs              Giỏ hàng (Session) và đặt hàng
+            │   ├── CuaHangController.cs           Danh sách cửa hàng (công khai)
+            │   ├── AdminProductController.cs      Quản lý bánh
+            │   ├── QuanLyDanhMucController.cs     Quản lý danh mục
+            │   ├── QuanLyCuaHangController.cs     Quản lý cửa hàng
+            │   └── AdminThongKeController.cs      Thống kê doanh thu
+            │
+            ├── Models/                        Các lớp dữ liệu (ánh xạ bảng trong CSDL)
+            │   ├── Banh.cs, DanhMuc.cs, ThanhVien.cs
+            │   ├── DonHang.cs, ChiTietDonHang.cs, CuaHang.cs
+            │   └── CartItem.cs, ErrorViewModel.cs
+            │
+            ├── Data/
+            │   └── BakeryContext.cs           DbContext của Entity Framework Core
+            │
+            ├── Migrations/                    3 migration và ModelSnapshot, dùng để tạo CSDL
+            │
+            ├── Views/                         Giao diện Razor (.cshtml)
+            │   ├── Home/                          Index, Categories, Details, Privacy
+            │   ├── Account/                       Login, Register, Profile, History
+            │   ├── Cart/                          Index, Cart, Checkout
+            │   ├── CuaHang/                       Index
+            │   ├── AdminProduct/                  Index, Create, Edit
+            │   ├── QuanLyDanhMuc/                 Index, Create, Edit
+            │   ├── QuanLyCuaHang/                 Index, Create, Edit
+            │   ├── AdminThongKe/                  Index
+            │   └── Shared/                        _Layout, Error, _ValidationScriptsPartial
+            │
+            ├── wwwroot/                       Tệp tĩnh
+            │   ├── css/site.css
+            │   ├── js/site.js
+            │   ├── images/                        Ảnh bánh (banh1…8.jpg) và cửa hàng (store1…4.jpg)
+            │   └── lib/                           bootstrap, jquery, jquery-validation
+            │
+            ├── Properties/launchSettings.json Cổng và profile khi chạy
+            ├── appsettings.json               Chuỗi kết nối CSDL
+            ├── appsettings.Development.json
+            ├── Program.cs                     Điểm khởi động, cấu hình DbContext và Session
+            └── AnhHoaBakery.csproj            Khai báo .NET 10 và các gói NuGet
+    ```
 
 
